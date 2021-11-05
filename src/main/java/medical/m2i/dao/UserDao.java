@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import medical.m2i.model.User;
 
@@ -15,9 +14,7 @@ public class UserDao {
 
 	public UserDao() {
 		super();
-		emf = Persistence.createEntityManagerFactory("medical7");
-		em = emf.createEntityManager();
-
+		em = DbConnection.getInstance();
 	}
 
 	public List<User> getUsers() throws ClassNotFoundException {

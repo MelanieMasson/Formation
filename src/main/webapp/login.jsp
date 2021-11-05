@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,9 @@
 <title>Welcome to MediCom App</title>
 </head>
 <body>
-
+	<!-- html comment -->
+	<%-- html jsp --%>
+	
 	<main class="container">
 		<div class="border-1 w-50 mx-auto">
 			<div id="msgErr" style="display:none">
@@ -48,6 +51,7 @@
 			let expires = "expires=" + d.toUTCString();
 			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 		}
+
 		function authentifier(login, password) {
 			
 			document.getElementById("submitbtn").innerHTML = '<div class="spinner-border" role="status"><span class="sr-only"></span></div>'; 
@@ -59,6 +63,7 @@
 			    'username': login,
 			    'password': password
 			};
+
 			// préparation des paramètres 
 			var formBody = [];
 			for (var property in details) {
@@ -67,6 +72,7 @@
 			  formBody.push(encodedKey + "=" + encodedValue);
 			}
 			formBody = formBody.join("&");
+
 			fetch("http://localhost:8080/medical7/", {
 			  method: 'POST',
 			  headers: {
@@ -99,6 +105,7 @@
 			} else {
 				alert("Login ou password est incorrect!")
 			} */ 
+
 		}
 	</script>
 
