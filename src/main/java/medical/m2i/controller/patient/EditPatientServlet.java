@@ -18,7 +18,7 @@ import medical.m2i.model.Ville;
 /**
  * Servlet implementation class EditPatientServlet
  */
-@WebServlet("/editPatient")
+@WebServlet("/edit")
 public class EditPatientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -37,6 +37,7 @@ public class EditPatientServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
 		int id = Integer.parseInt(request.getParameter("id"));
 
 		PatientDao patientDao = new PatientDao();
@@ -57,18 +58,16 @@ public class EditPatientServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/patient/patientedit.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/patientedit.jsp");
 		dispatcher.forward(request, response);
+
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("Je suis bien dans la méthode post");
+		// R�cup�rer les infos soumises
+
+		System.out.println("Je suis bien dans la m�thode post");
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
 		String naissance = request.getParameter("naissance");
@@ -78,10 +77,10 @@ public class EditPatientServlet extends HttpServlet {
 
 		int id = Integer.parseInt(request.getParameter("id"));
 
-		// Mettre à jour le patient en question
+		// Mettre � jour le patient en question
 		PatientDao patientDao = new PatientDao();
-		System.out.println("ok dans edit patient : " + id);
-		patientDao.editPatient(id, nom, prenom, naissance, adresse);
+		System.out.println("ok dans edit patient zz" + id);
+		patientDao.editPatient(id, nom, prenom, naissance, adresse, pays, ville);
 
 		response.sendRedirect(request.getContextPath() + "/ListPatientServlet");
 

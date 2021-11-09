@@ -14,7 +14,7 @@ import medical.m2i.model.Patient;
 /**
  * Servlet implementation class Test
  */
-@WebServlet("/registerPatient")
+@WebServlet("/register")
 public class PatientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -49,7 +49,7 @@ public class PatientServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println("Je suis bien dans la méthode post");
+		System.out.println("Je suis bien dans la m�thode post");
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
 		String naissance = request.getParameter("naissance");

@@ -11,10 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- * @author DESGOUILLES Pierre
- *
- */
 @Entity
 public class Patient implements Serializable {
 

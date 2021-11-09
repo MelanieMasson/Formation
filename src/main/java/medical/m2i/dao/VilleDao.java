@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 
 import medical.m2i.model.Ville;
 
@@ -15,6 +16,29 @@ public class VilleDao {
 	public VilleDao() {
 		super();
 		em = DbConnection.getInstance();
+	}
+
+	public int registerVille(Ville patient) throws ClassNotFoundException {
+		int id = 0;
+
+		// Récupération d’une transaction
+		EntityTransaction tx = em.getTransaction();
+		// Début des modifications
+		try {
+			tx.begin();
+			em.persist(patient);
+			tx.commit();
+			id = patient.getId();
+		} catch (Exception e) {
+			e.getStackTrace();
+			tx.rollback();
+		} finally {
+			// em.close();
+			// emf.close();
+		}
+		System.out.println("id du patient : " + id);
+		return id;
+
 	}
 
 	public List<Ville> getVilles() throws ClassNotFoundException {

@@ -34,19 +34,20 @@ public class ListPatientServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		PatientDao patientDao = new PatientDao();
-		System.out.println("ok dans doGet Patient");
+		System.out.println("ok dans getr patient");
 		try {
 			List<Patient> pl = patientDao.getPatients();
-			System.out.println("pl size : " + pl.size());
+			System.out.println("pl size" + pl.size());
 			request.setAttribute("pl", pl);
 		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/patient/listepatient.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/listepatient.jsp");
 		dispatcher.forward(request, response);
 	}
 }
